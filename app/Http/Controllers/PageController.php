@@ -26,6 +26,18 @@ class PageController extends Controller
         return view('reviews', ['reviews' => $reviews]);
     }
 
+    public function search(Request $request)
+    {
+        $searchValue = $request->input('s');
+        $reviews = ReviewsModel::where('name', 'like', "%{$searchValue}%")
+            ->orWhere('email', 'like', "%{$searchValue}%")
+            ->orWhere('message', 'like', "%{$searchValue}%")
+            ->paginate(6);
+
+
+        return view('reviews', ['reviews' => $reviews]);
+    }
+
     public function reviews_check(Request $request)
     {
         $valid = $request->validate([

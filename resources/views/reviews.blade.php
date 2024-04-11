@@ -37,23 +37,33 @@
 
         <button type="submit" class="btn btn-success">Отправить отзывы</button>
     </form>
-
-    <br>
+    <h2 class="m-4">Отзывы</h2>
     <hr>
-    <h2>Все отзывы</h2>
+
+     <h2 class="m-4">Поиск по отзывам</h2>
+    <form method="get" action="{{route('search')}}" class="inline-flex gap-4 mb-10" role="search">
+        <input type="search" class="form-control form-control-dark text-bg-dark" id="s" name="s" placeholder="Search..." aria-label="Search">
+        <button type="submit" class="btn btn-success">Поиск</button>                
+     </form>
     <br>
     <ul class="grid grid-cols-3 gap-5">
-        @foreach ($reviews as $el)
-            <li class="p-4 border rounded-lg">
-                <h3 class="text-xl mb-2">{{ $el->name }}</h3>
-                <p class="text-slate-300 mb-2">{{ $el->email }}</p>
-                <p class="mb-4">{{ $el->message }}</p>
+        @if ($reviews->isNotEmpty())
+            @foreach ($reviews as $el)
+                <li class="p-4 border rounded-lg">
+                    <h3 class="text-xl mb-2">{{ $el->name }}</h3>
+                    <p class="text-slate-300 mb-2">{{ $el->email }}</p>
+                    <p class="mb-4">{{ $el->message }}</p>
+                    <a href="{{ route('review-one', $el->id) }}" class="btn btn-success">Подробнее</a>
+                </li>
+            @endforeach
+        </ul>
 
-                <a href="{{ route('review-one', $el->id) }}" class="btn btn-success">Подробнее</a>
-            </li>
-        @endforeach
-    </ul>
-    <div class="p-7">
-        {{$reviews->links()}}
-    </div>
+        <div class="p-7">
+            {{$reviews->links()}}
+        </div>
+
+        @else
+            ничего не найдено
+        @endif
+            
 @endsection

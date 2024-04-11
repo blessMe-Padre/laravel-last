@@ -39,6 +39,9 @@ Route::get('/reviews', [PageController::class, 'reviews'])->name('reviews');
 Route::post('/reviews/check', [PageController::class, 'reviews_check']);
 Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('review-one');
 
+// Роуты для работы с "Поиск"
+Route::get('/search', [PageController::class, 'search'])->name('search');
+
 
 // ==== АДМИНКА ОТЗЫВЫ =================================================================
 Route::get('/admin/reviews', [AdminReviewsController::class, 'index'])->name('admin-reviews');
