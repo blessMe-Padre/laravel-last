@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ReviewsModel;
+use App\Models\User;
 
 class AdminReviewsController extends Controller
 {
@@ -45,5 +46,12 @@ class AdminReviewsController extends Controller
     {
         ReviewsModel::find($id)->delete();
         return redirect()->route('admin-reviews');
+    }
+
+    public function show_users()
+    {
+        $users = new User();
+        $users = $users->all();
+        return view('admin.admin-users', ['users' => $users]);
     }
 }

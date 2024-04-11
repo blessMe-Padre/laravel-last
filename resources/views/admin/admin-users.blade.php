@@ -15,13 +15,11 @@
 
         <!-- RIGHT -->
         <div>
-            @foreach ($reviews as $review)
-                <div class="border p-3 m-3">
-                    <h2 class="mb-2">{{ $review->name }}</h2>
-                    <p class="mb-2">{{ $review->email }}</p>
-                    <p class="mb-2">{{ $review->message }}</p>
-                    <a href="{{ route('admin-reviews-edit', $review->id) }}" class="btn btn-success">Редактировать</a>
-                    <a href="{{ route('admin-reviews-delete', $review->id) }}" class="btn btn-danger">Удалить</a>
+            @foreach ($users as $el)
+                <div class="border p-3 m-3 flex items-center gap-3">
+                    <h2 class="">Имя: {{ $el->name }}</h2>
+                    <p class="">Почта: {{ $el->email }}</p>
+                    <p class="">Тип пользователя: {{ $el->usertype }}</p>
                 </div>
             @endforeach
         </div>

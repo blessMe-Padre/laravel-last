@@ -46,5 +46,6 @@ Route::get('/admin/reviews/{id}/edit', [AdminReviewsController::class, 'edit_rev
 Route::post('/admin/reviews/{id}/edit-submit', [AdminReviewsController::class, 'edit_review_submit'])->name('admin-reviews-submit');
 Route::get('/admin/reviews/{id}/delete', [AdminReviewsController::class, 'delete_review'])->name('admin-reviews-delete');
 
+Route::get('/admin/users', [AdminReviewsController::class, 'show_users'])->name('admin-users');
 
 require __DIR__ . '/auth.php';
