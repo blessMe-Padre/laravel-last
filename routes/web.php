@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
+Route::get('/about', [PageController::class, 'about'])->name('about');
+
 
 
 Route::get('/dashboard', function () {
@@ -30,5 +32,10 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Роуты для работы с "Отзывы"
+Route::get('/reviews', [PageController::class, 'reviews'])->name('reviews');
+Route::post('/reviews/check', [PageController::class, 'reviews_check']);
+Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('review-one');
 
 require __DIR__ . '/auth.php';
