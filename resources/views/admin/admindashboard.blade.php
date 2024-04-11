@@ -1,17 +1,28 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Admin Dashboard') }}
         </h2>
     </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("You're logged in as ADMIN!") }}
-                </div>
-            </div>
+     <div class="admin-wrapper">
+
+        <!-- LEFT -->
+        <div class="admin-wrapper-left">
+            <button class="menu-item">Отзывы</button>
         </div>
-    </div>
+
+        <!-- RIGHT -->
+        <div class="p-8">
+                <p class="text-white font-bold text-4xl mb-3">
+                    {{ __("You're logged as Admin!") }}
+                </p>
+
+                <p class="text-white text-2xl mb-3">Выберите что хотели бы отредактировать в левом меню</p>
+            
+        </div>
+        
+    </div>    
+    
+
 </x-app-layout>

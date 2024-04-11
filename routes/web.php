@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminReviewsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,5 +38,10 @@ Route::middleware('auth')->group(function () {
 Route::get('/reviews', [PageController::class, 'reviews'])->name('reviews');
 Route::post('/reviews/check', [PageController::class, 'reviews_check']);
 Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('review-one');
+
+
+// ==== АДМИНКА =================================================================
+Route::get('/admin/reviews', [AdminReviewsController::class, 'index'])->name('admin.reviews');
+
 
 require __DIR__ . '/auth.php';
