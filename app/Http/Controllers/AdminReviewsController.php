@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\ReviewsModel;
 
 class AdminReviewsController extends Controller
 {
@@ -11,32 +12,38 @@ class AdminReviewsController extends Controller
      */
     public function index()
     {
-        //
+        $reviews = new ReviewsModel();
+        $reviews = $reviews->all();
+        return view('admin.admin-reviews', ['reviews' => $reviews]);
+    }
+
+    public function edit_review($id)
+    {
+        $reviews = new ReviewsModel();
+        return view('admin.admin-review-edit', ['data' => $reviews->find($id)]);
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function edit_review_submit($id, Request $request)
     {
-        //
+        $valid = $request->validate([
+            'name' => 'required | min:3',
+            'message' => 'required | min:10',
+        ]);
+
+        $review = ReviewsModel::find($id);
+        $review->name = $request->input('name');
+        $review->email = $request->input('email');
+        $review->message = $request->input('message');
+
+        $review->save();
+
+        return redirect()->route('admin-reviews', $id);
     }
 
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
+    public function delete_review($id)
     {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        ReviewsModel::find($id)->delete();
+        return redirect()->route('admin-reviews');
     }
 }

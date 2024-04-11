@@ -9,7 +9,7 @@
 
         <!-- LEFT -->
         <div class="admin-wrapper-left">
-            <button class="menu-item">Отзывы</button>
+            <a href="{{route('admin-reviews')}}" class="menu-item">Отзывы</a>
         </div>
 
         <!-- RIGHT -->

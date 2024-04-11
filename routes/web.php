@@ -41,7 +41,10 @@ Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('
 
 
 // ==== АДМИНКА =================================================================
-Route::get('/admin/reviews', [AdminReviewsController::class, 'index'])->name('admin.reviews');
+Route::get('/admin/reviews', [AdminReviewsController::class, 'index'])->name('admin-reviews');
+Route::get('/admin/reviews/{id}/edit', [AdminReviewsController::class, 'edit_review'])->name('admin-reviews-edit');
+Route::post('/admin/reviews/{id}/edit-submit', [AdminReviewsController::class, 'edit_review_submit'])->name('admin-reviews-submit');
+Route::get('/admin/reviews/{id}/delete', [AdminReviewsController::class, 'delete_review'])->name('admin-reviews-delete');
 
 
 require __DIR__ . '/auth.php';
