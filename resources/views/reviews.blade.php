@@ -42,15 +42,18 @@
     <hr>
     <h2>Все отзывы</h2>
     <br>
-    <div class="row gap-5">
+    <ul class="grid grid-cols-3 gap-5">
         @foreach ($reviews as $el)
-            <div class="alert alert-warning col">
-                <h3>{{ $el->name }}</h3>
-                <p>{{ $el->email }}</p>
-                <p>{{ $el->massage }}</p>
+            <li class="p-4 border rounded-lg">
+                <h3 class="text-xl mb-2">{{ $el->name }}</h3>
+                <p class="text-slate-300 mb-2">{{ $el->email }}</p>
+                <p class="mb-4">{{ $el->message }}</p>
 
                 <a href="{{ route('review-one', $el->id) }}" class="btn btn-success">Подробнее</a>
-            </div>
+            </li>
         @endforeach
+    </ul>
+    <div class="p-7">
+        {{$reviews->links()}}
     </div>
 @endsection

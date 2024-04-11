@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-// Роуты для работы с "Отзывы"
+// Роуты для работы с "Отзывами"
 Route::get('/reviews', [PageController::class, 'reviews'])->name('reviews');
 Route::post('/reviews/check', [PageController::class, 'reviews_check']);
 Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('review-one');

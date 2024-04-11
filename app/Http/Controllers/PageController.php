@@ -19,7 +19,8 @@ class PageController extends Controller
     public function reviews()
     {
         $reviews = new ReviewsModel();
-        return view('reviews', ['reviews' => $reviews->all()]);
+        $reviews = $reviews->orderBy('name')->paginate(6);
+        return view('reviews', ['reviews' => $reviews]);
     }
 
     public function reviews_check(Request $request)
