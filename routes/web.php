@@ -40,7 +40,7 @@ Route::post('/reviews/check', [PageController::class, 'reviews_check']);
 Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('review-one');
 
 
-// ==== АДМИНКА =================================================================
+// ==== АДМИНКА ОТЗЫВЫ =================================================================
 Route::get('/admin/reviews', [AdminReviewsController::class, 'index'])->name('admin-reviews');
 Route::get('/admin/reviews/{id}/edit', [AdminReviewsController::class, 'edit_review'])->name('admin-reviews-edit');
 Route::post('/admin/reviews/{id}/edit-submit', [AdminReviewsController::class, 'edit_review_submit'])->name('admin-reviews-submit');
