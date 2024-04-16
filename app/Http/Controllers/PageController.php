@@ -82,12 +82,20 @@ class PageController extends Controller
 
         if ($searchValue) {
             $users = User::where('name', 'like', "%{$searchValue}%")->get();
+            $users_data = [];
+
+            foreach ($users as $user) {
+                $user_data = $user->toArray();
+                $user_data['reviews'] = $user->reviews->toArray();
+                $users_data[] = $user_data;
+            }
+
         } else {
-            $users = User::all();
+            $users_data = User::all();
         }
 
         return response()->json([
-            'users' => $users
+            'users' => $users_data
         ]);
     }
 }

@@ -14,17 +14,10 @@
         </div>
 
         <!-- RIGHT -->
+
         <div>
-            @foreach ($users as $el)
-                <div class="border p-3 m-3 flex items-center gap-3">
-                    <h2 class="">Имя: {{ $el->name }}</h2>
-                    <p class="">Почта: {{ $el->email }}</p>
-                    <p class="">Тип пользователя: {{ $el->usertype }}</p>
-                </div>
-            @endforeach
+
         </div>
         
     </div>    
-    
-
 </x-app-layout>
