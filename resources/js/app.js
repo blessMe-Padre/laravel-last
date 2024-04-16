@@ -37,13 +37,17 @@ function requestToController(inputValue) {
         .then(response => response.json())
         .then(data => {
             result.innerHTML = '';
-
+            console.log(data);
             if (data.users.length > 0) {
                 data.users.forEach(user => {
                     result.innerHTML += `Имя пользователя: ${user.name} <br>`;
                     if (user.reviews) {
                         user.reviews.forEach(review => {
-                            result.innerHTML += `отзыв: ${review.message} <br>`;
+                            result.innerHTML += `
+                            <li class="ml-4 pt-2 pb-3 border-b-2">отзыв: ${review.message}
+                                <a class="block" href="/admin/reviews/${review.id}/edit">перейти</a>
+                            </li>
+                            `;
                         });
                     }
                 });

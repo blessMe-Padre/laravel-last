@@ -8,9 +8,26 @@
     <h1 class="mb-3">Главная</h1>
 
     <div class="inner">
-        <h2 class="text-2xl">Заголовок Н2</h2>
-        <p class="text-xl font-bold mb-6 underline">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa vel
-            molestiae doloribus illo nobis quaerat
-            eligendi veniam a sint voluptatem, vitae, ducimus modi libero velit. Dolor asperiores quos modi eos.</p>
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="..." class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+        </div>
     </div>
 @endsection

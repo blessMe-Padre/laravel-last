@@ -15,7 +15,7 @@
 
         <!-- RIGHT -->
 
-        <div>
+        <div class="px-4">
             <form id="liveSearchForm" method="POST" action="{{ route('live-search-search') }}" class="inline-flex gap-4 mt-10 mb-10"
             role="search">
                 @csrf
@@ -23,11 +23,11 @@
                     id="searchInput" name="s2">
             </form>
 
-            <div id="searchResults">
+            <ul id="searchResults">
                 @foreach ($users as $user)
                     <p>Имя пользователя: {{ $user->name }}</p>
                 @endforeach
-            </div>
+            </ul>
         </div>
         
     </div>    
