@@ -8,11 +8,39 @@ Alpine.start();
 
 const searchForm = document.querySelector('#liveSearchForm');
 const input = searchForm.querySelector('#searchInput');
+const result = document.querySelector('#searchResults');
 
 input.addEventListener('input', () => {
-
     let inputValue = input.value;
-    console.log(inputValue);
+
+    let formData = new FormData();
+    formData.append('s2', inputValue);
+
+    fetch(searchForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+            'X-CSRF-TOKEN': document.querySelector('input[name="_token"]').value,
+        }
+    })
+        .then(response => response.json())
+        .then(data => {
+            result.innerHTML = '';
+            console.log();
+
+            if (data.users.length > 0) {
+                data.users.forEach(user => {
+                    result.innerHTML += `Имя пользователя: ${user.name} <br>`;
+                });
+            }
+            else {
+                result.innerHTML = 'Пользователя не найдено';
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
 });
+
 
 

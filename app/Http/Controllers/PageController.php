@@ -69,14 +69,26 @@ class PageController extends Controller
         return view('reviews', ['reviews' => $reviews]);
     }
 
-    public function live_search(Request $request)
+    public function live_search()
     {
-        $searchValue = $request->input('s2');
-        dump($searchValue);
-        // $users = User::where('name', 'like', "%{$searchValue}%")->get();
         $users = new User();
         $users = $users->all();
         return view('live-search', ['users' => $users]);
+    }
+
+    public function live_search_search(Request $request)
+    {
+        $searchValue = $request->input('s2');
+
+        if ($searchValue) {
+            $users = User::where('name', 'like', "%{$searchValue}%")->get();
+        } else {
+            $users = User::all();
+        }
+
+        return response()->json([
+            'users' => $users
+        ]);
     }
 }
 
