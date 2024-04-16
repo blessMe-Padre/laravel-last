@@ -57,7 +57,6 @@ class PageController extends Controller
         return view('review', ['data' => $reviews->find($id)]);
     }
 
-
     public function search(Request $request)
     {
         $searchValue = $request->input('s');
@@ -67,13 +66,6 @@ class PageController extends Controller
             ->paginate(6);
 
         return view('reviews', ['reviews' => $reviews]);
-    }
-
-    public function live_search()
-    {
-        $users = new User();
-        $users = $users->all();
-        return view('live-search', ['users' => $users]);
     }
 
     public function live_search_search(Request $request)

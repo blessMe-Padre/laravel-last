@@ -10,7 +10,7 @@
         <!-- LEFT -->
         <div class="admin-wrapper-left">
             <a href="{{route('admin-reviews')}}" class="menu-item">Отзывы</a>
-            <a href="/" class="menu-item">Пользователи</a>
+            <a href="{{route('admin-users')}}" class="menu-item">Пользователи</a>
         </div>
 
         <!-- RIGHT -->

@@ -57,7 +57,6 @@ Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('
 
 // Роуты для работы с "Поиск"
 Route::get('/search', [PageController::class, 'search'])->name('search');
-Route::get('/live-search', [PageController::class, 'live_search'])->name('live-search');
 Route::post('/search2', [PageController::class, 'live_search_search'])->name('live-search-search');
 
 

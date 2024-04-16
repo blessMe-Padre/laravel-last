@@ -23,5 +23,6 @@
     "Your password has been reset!": "Ваш пароль был сброшен!",
     "We have emailed your password reset link!": "Мы отправили вам ссылку для сброса пароля!",
     "Please wait before retrying.": "Пожалуйста, подождите перед повторной попыткой.",
-    "This password reset token is invalid.": "Этот токен сброса пароля недействителен."
+    "This password reset token is invalid.": "Этот токен сброса пароля недействителен.",
+    "Admin Dashboard": "Панель администратора"
 }
