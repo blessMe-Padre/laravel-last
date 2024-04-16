@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Models\ReviewsModel;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class PageController extends Controller
 {
@@ -50,6 +52,12 @@ class PageController extends Controller
         $review->email = $request->input('email');
         $review->message = $request->input('message');
 
+        if (Auth::check()) { // Проверяем, авторизован ли пользователь
+            $review->user_id = Auth::id(); // Получаем ID пользователя и присваиваем его свойству user_id
+        } else {
+            $review->user_id = 666; // Получаем ID пользователя и присваиваем его свойству user_id
+        }
+
         $review->save();
 
         return redirect()->route('reviews')->with('success', 'Отзыв был успешно добавлен');
@@ -59,5 +67,12 @@ class PageController extends Controller
     {
         $reviews = new ReviewsModel();
         return view('review', ['data' => $reviews->find($id)]);
+    }
+
+    public function live_search()
+    {
+        $users = new User();
+        $users = $users->all();
+        return view('live-search', ['users' => $users]);
     }
 }

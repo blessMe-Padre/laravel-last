@@ -6,6 +6,9 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminReviewsController;
 use Illuminate\Support\Facades\Route;
 
+use App\Models\ReviewsModel;
+use App\Models\User;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +20,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/test', function () {
+    $users = new User();
+    $users = $users->all();
+    foreach ($users as $user) {
+        echo 'Имя пользователя: ' . $user->name . '<br>';
+
+        foreach ($user->reviews as $review) {
+            echo 'отзыв ' . $review->message . '<br>';
+        }
+        echo '--------------------------------------';
+        echo '<br>';
+    }
+});
+
+
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
 Route::get('/about', [PageController::class, 'about'])->name('about');
-
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -41,6 +57,7 @@ Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('
 
 // Роуты для работы с "Поиск"
 Route::get('/search', [PageController::class, 'search'])->name('search');
+Route::get('/live-search', [PageController::class, 'live_search'])->name('live-search');
 
 
 // ==== АДМИНКА ОТЗЫВЫ =================================================================

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\ReviewsModel;
 use App\Models\User;
 
+use Illuminate\Support\Facades\Auth;
+
 class AdminReviewsController extends Controller
 {
     /**
@@ -36,6 +38,12 @@ class AdminReviewsController extends Controller
         $review->name = $request->input('name');
         $review->email = $request->input('email');
         $review->message = $request->input('message');
+
+        if (Auth::check()) { // Проверяем, авторизован ли пользователь
+            $review->user_id = Auth::id(); // Получаем ID пользователя и присваиваем его свойству user_id
+        } else {
+            $review->user_id = 666; // Получаем ID пользователя и присваиваем его свойству user_id
+        }
 
         $review->save();
 
