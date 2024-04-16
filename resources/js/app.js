@@ -7,7 +7,7 @@ window.Alpine = Alpine;
 Alpine.start();
 
 const searchForm = document.querySelector('#liveSearchForm');
-const input = searchForm.querySelector('#searchInput');
+const input = document.querySelector('#searchInput');
 const result = document.querySelector('#searchResults');
 
 if (searchForm) {
@@ -37,8 +37,7 @@ function requestToController(inputValue) {
         .then(response => response.json())
         .then(data => {
             result.innerHTML = '';
-            console.log(data);
-            console.log(data.users.length);
+
             if (data.users.length > 0) {
                 data.users.forEach(user => {
                     result.innerHTML += `Имя пользователя: ${user.name} <br>`;
