@@ -38,10 +38,11 @@ function requestToController(inputValue) {
         .then(data => {
             result.innerHTML = '';
             console.log(data);
+            console.log(data.users.length);
             if (data.users.length > 0) {
                 data.users.forEach(user => {
                     result.innerHTML += `Имя пользователя: ${user.name} <br>`;
-                    if (user.length > 0) {
+                    if (user.reviews) {
                         user.reviews.forEach(review => {
                             result.innerHTML += `отзыв: ${review.message} <br>`;
                         });
