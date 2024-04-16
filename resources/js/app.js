@@ -30,9 +30,9 @@ input.addEventListener('input', () => {
             if (data.users.length > 0) {
                 data.users.forEach(user => {
                     result.innerHTML += `Имя пользователя: ${user.name} <br>`;
-                    // user.reviews.forEach(review => {
-                    //     result.innerHTML += `отзыв: ${review.message} <br>`;
-                    // });
+                    user.reviews.forEach(review => {
+                        result.innerHTML += `отзыв: ${review.message} <br>`;
+                    });
                 });
             }
             else {
