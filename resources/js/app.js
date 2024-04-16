@@ -10,8 +10,19 @@ const searchForm = document.querySelector('#liveSearchForm');
 const input = searchForm.querySelector('#searchInput');
 const result = document.querySelector('#searchResults');
 
-input.addEventListener('input', () => {
-    let inputValue = input.value;
+if (searchForm) {
+    let timer;
+    input.addEventListener('input', () => {
+        let inputValue = input.value;
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+            requestToController(inputValue);
+        }, 1000);
+    });
+}
+
+function requestToController(inputValue) {
 
     let formData = new FormData();
     formData.append('s2', inputValue);
@@ -30,9 +41,11 @@ input.addEventListener('input', () => {
             if (data.users.length > 0) {
                 data.users.forEach(user => {
                     result.innerHTML += `Имя пользователя: ${user.name} <br>`;
-                    user.reviews.forEach(review => {
-                        result.innerHTML += `отзыв: ${review.message} <br>`;
-                    });
+                    if (user.length > 0) {
+                        user.reviews.forEach(review => {
+                            result.innerHTML += `отзыв: ${review.message} <br>`;
+                        });
+                    }
                 });
             }
             else {
@@ -42,7 +55,7 @@ input.addEventListener('input', () => {
         .catch((error) => {
             console.error('Error:', error);
         });
-});
+}
 
 
 
