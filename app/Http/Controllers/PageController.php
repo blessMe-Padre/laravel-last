@@ -28,18 +28,6 @@ class PageController extends Controller
         return view('reviews', ['reviews' => $reviews]);
     }
 
-    public function search(Request $request)
-    {
-        $searchValue = $request->input('s');
-        $reviews = ReviewsModel::where('name', 'like', "%{$searchValue}%")
-            ->orWhere('email', 'like', "%{$searchValue}%")
-            ->orWhere('message', 'like', "%{$searchValue}%")
-            ->paginate(6);
-
-
-        return view('reviews', ['reviews' => $reviews]);
-    }
-
     public function reviews_check(Request $request)
     {
         $valid = $request->validate([
@@ -69,10 +57,26 @@ class PageController extends Controller
         return view('review', ['data' => $reviews->find($id)]);
     }
 
-    public function live_search()
+
+    public function search(Request $request)
     {
+        $searchValue = $request->input('s');
+        $reviews = ReviewsModel::where('name', 'like', "%{$searchValue}%")
+            ->orWhere('email', 'like', "%{$searchValue}%")
+            ->orWhere('message', 'like', "%{$searchValue}%")
+            ->paginate(6);
+
+        return view('reviews', ['reviews' => $reviews]);
+    }
+
+    public function live_search(Request $request)
+    {
+        $searchValue = $request->input('s2');
+        dump($searchValue);
+        // $users = User::where('name', 'like', "%{$searchValue}%")->get();
         $users = new User();
         $users = $users->all();
         return view('live-search', ['users' => $users]);
     }
 }
+

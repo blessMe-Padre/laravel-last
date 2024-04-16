@@ -20,19 +20,19 @@ use App\Models\User;
 |
 */
 
-Route::get('/test', function () {
-    $users = new User();
-    $users = $users->all();
-    foreach ($users as $user) {
-        echo 'Имя пользователя: ' . $user->name . '<br>';
+// Route::get('/test', function () {
+//     $users = new User();
+//     $users = $users->all();
+//     foreach ($users as $user) {
+//         echo 'Имя пользователя: ' . $user->name . '<br>';
 
-        foreach ($user->reviews as $review) {
-            echo 'отзыв ' . $review->message . '<br>';
-        }
-        echo '--------------------------------------';
-        echo '<br>';
-    }
-});
+//         foreach ($user->reviews as $review) {
+//             echo 'отзыв ' . $review->message . '<br>';
+//         }
+//         echo '--------------------------------------';
+//         echo '<br>';
+//     }
+// });
 
 
 Route::get('/', [PageController::class, 'welcome'])->name('welcome');
@@ -57,7 +57,7 @@ Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('
 
 // Роуты для работы с "Поиск"
 Route::get('/search', [PageController::class, 'search'])->name('search');
-Route::get('/live-search', [PageController::class, 'live_search'])->name('live-search');
+Route::post('/live-search', [PageController::class, 'live_search'])->name('live-search');
 
 
 // ==== АДМИНКА ОТЗЫВЫ =================================================================
