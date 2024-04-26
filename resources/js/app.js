@@ -60,6 +60,3 @@ function requestToController(inputValue) {
             console.error('Error:', error);
         });
 }
-
-
-

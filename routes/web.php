@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminReviewsController;
 use Illuminate\Support\Facades\Route;
 
@@ -58,6 +59,10 @@ Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('
 // Роуты для работы с "Поиск"
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::post('/search2', [PageController::class, 'live_search_search'])->name('live-search-search');
+
+// Роуты для отправки писем
+Route::get('/send-email', [MailController::class, 'send_email'])->name('send-email');
+Route::post('/send-email/check', [MailController::class, 'send_email_post'])->name('send-email-post');
 
 
 // ==== АДМИНКА ОТЗЫВЫ =================================================================
