@@ -22,8 +22,10 @@ class MailFormRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required | min:3',
+            'name' => 'required | min:3 | alpha',
+            'email' => 'email:rfc,dns',
             'subject' => 'required | min:5',
+            'phone' => 'required | min:5',
             'message' => 'required | min:10',
         ];
     }

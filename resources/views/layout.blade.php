@@ -68,6 +68,7 @@
                     <li><a href="{{route('welcome')}}" class="nav-link px-2 text-secondary">Главная</a></li>
                     <li><a href="{{route('about')}}" class="nav-link px-2 text-white">О нас</a></li>
                     <li><a href="{{route('reviews')}}" class="nav-link px-2 text-white">Отзывы</a></li>
+                    <li><a href="{{route('send-email')}}" class="nav-link px-2 text-white">Написать письмо</a></li>
                 </ul>
 
                 {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
