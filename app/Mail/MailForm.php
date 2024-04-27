@@ -24,7 +24,9 @@ class MailForm extends Mailable
     }
 
     /**
-     * Get the message envelope.
+     * Создать новый экземпляр сообщения.
+     *
+     * @param array $formData Данные формы для передачи в представление
      */
     public function envelope(): Envelope
     {
@@ -33,23 +35,13 @@ class MailForm extends Mailable
         );
     }
 
-    /**
-     * Get the message content definition.
-     */
     public function content(): Content
     {
         return new Content(
             view: 'emails.email_form',
+            with: ['formData' => $this->formData] // Передача данных формы в представление
         );
     }
-
-    // public function build()
-    // {
-    //     return $this->view('emails.email_form')
-    //         ->with([
-    //             'formData' => $this->formData
-    //         ]);
-    // }
 
     /**
      * Get the attachments for the message.
