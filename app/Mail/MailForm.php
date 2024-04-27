@@ -30,8 +30,10 @@ class MailForm extends Mailable
      */
     public function envelope(): Envelope
     {
+        $subject = $this->formData['subject'] ?? 'Без темы';
+
         return new Envelope(
-            subject: 'Mail Form',
+            subject: $subject,
         );
     }
 
