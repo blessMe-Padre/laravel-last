@@ -60,3 +60,6 @@ function requestToController(inputValue) {
             console.error('Error:', error);
         });
 }
+
+
+console.log('подключен js файл');

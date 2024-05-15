@@ -90,5 +90,16 @@ class PageController extends Controller
             'users' => $users_data
         ]);
     }
+
+    public function events()
+    {
+        return view('events');
+    }
+
+    public function show_one_event($id)
+    {
+        return view('event', ['id' => $id]);
+    }
+
 }
 

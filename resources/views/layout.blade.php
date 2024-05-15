@@ -69,6 +69,7 @@
                     <li><a href="{{route('about')}}" class="nav-link px-2 text-white">О нас</a></li>
                     <li><a href="{{route('reviews')}}" class="nav-link px-2 text-white">Отзывы</a></li>
                     <li><a href="{{route('send-email')}}" class="nav-link px-2 text-white">Написать письмо</a></li>
+                    <li><a href="{{route('events')}}" class="nav-link px-2 text-white">Мероприятия</a></li>
                 </ul>
 
                 {{-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
@@ -101,7 +102,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        </script>
 </body>
 
 </html>

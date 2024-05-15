@@ -56,6 +56,10 @@ Route::get('/reviews', [PageController::class, 'reviews'])->name('reviews');
 Route::post('/reviews/check', [PageController::class, 'reviews_check']);
 Route::get('/reviews/{id}', [PageController::class, 'show_one_reviews'])->name('review-one');
 
+// Роуты для работы с "Мероприятия"
+Route::get('/events', [PageController::class, 'events'])->name('events');
+Route::get('/events/{id}', [PageController::class, 'show_one_event'])->name('event');
+
 // Роуты для работы с "Поиск"
 Route::get('/search', [PageController::class, 'search'])->name('search');
 Route::post('/search2', [PageController::class, 'live_search_search'])->name('live-search-search');
@@ -63,7 +67,6 @@ Route::post('/search2', [PageController::class, 'live_search_search'])->name('li
 // Роуты для отправки писем
 Route::get('/send-email', [MailController::class, 'send_email'])->name('send-email');
 Route::post('/send-email/check', [MailController::class, 'send_email_post'])->name('send-email-post');
-
 
 // ==== АДМИНКА ОТЗЫВЫ =================================================================
 Route::get('/admin/reviews', [AdminReviewsController::class, 'index'])->name('admin-reviews');
